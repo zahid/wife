@@ -1,0 +1,19 @@
+{
+  "name": "angular-sample",
+  "version": "0.0.0",
+  "authors": [
+    "Zahid Mahir <zahid@zmhr.me>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.25",
+    "bootstrap": "~3.2.0"
+  }
+}

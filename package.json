@@ -1,0 +1,10 @@
+{
+    "name": "angular-sample",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "gulp-connect": "~2.0.6",
+        "gulp": "~3.8.8"
+    }
+}
