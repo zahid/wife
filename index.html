@@ -29,20 +29,24 @@
             </div>
             <div class='col-lg-6 col-lg-offset-3 well'>
                 <form ng-submit='expenses.add_expense()' class='form'>
-                    <div class='row'>
+                    <div class='row-fluid'>
                         <div class='col-lg-6'>
                             <input class='form-control' type='text' placeholder='what?' ng-model='expenses.new_expense.name' required>
                             <input class='form-control' type='text' placeholder='why?' ng-model='expenses.new_expense.description' required>
                             <input class='form-control' type='number' placeholder='how much?' ng-model='expenses.new_expense.cost' required>
                         </div>
-                        <div class='col-lg-1 col-lg-offset-1'>
-                            <button type='submit' class='btn btn-default'>Tell your wife</button>
+                        <div class='col-lg-6'>
+                            <div class='col-lg-12'>
+                                {{expenses.totals.count}} purchases <br /> {{expenses.totals.cost | currency}} spent
+                            </div>
+                            <div class='col-lg-12'>
+                                <button type='submit' class='btn btn-default'>update your wife</button>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
-            
-            <div class='col-lg-8 col-lg-offset-2 well'>
+            <div class='col-lg-6 col-lg-offset-3 well'>
                 <table class='table'>
                     <tr ng-repeat='expense in expenses.list'>
                         <td>{{expense.date | date:'MMM d, h:mm a' }}</td>

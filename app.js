@@ -14,17 +14,19 @@ var wife = angular.module('Wife', [])
         },
         totals : {
             cost : 0,
-            items : 0
+            count : 0
         }
     };
+
     $scope.$watch('expenses.list', function(o,n) {
         var total_cost = 0;
         for(var item in $scope.expenses.list) {
             total_cost += $scope.expenses.list[item].cost;
         }
         $scope.expenses.totals.cost = total_cost
-        $scope.expenses.totals.items = $scope.expenses.list.length;
-    });
+        $scope.expenses.totals.count = $scope.expenses.list.length;
+    }, true);
+    
     expenseService.load_expenses().then(function (data) {
         $scope.expenses.list = data.items;
     });
