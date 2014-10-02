@@ -3,34 +3,46 @@
     <head>
         <meta charset='utf-8'>
         <title>Wife</title>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Noto+Serif:400italic,400,700italic,700'>
         <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css'>
     </head>
+
+    <style type='text/css'>
+        body, p, td, h1, h3 {
+            color: rgb(68, 66, 62);
+            font-family: 'Proxima Nova','Helvetica Neue','Helvetica',sans-serif;
+            font-weight: 300;
+        }
+        h1 {
+            font-size: 4em;
+        }
+        .well {
+            background-color: white;
+        }
+    </style>
     <body ng-app='Wife'>
         
         <div ng-controller='expenseController'>
             <div class='col-lg-6 col-lg-offset-3'>
                 <h1>wife</h1>
+                <h3>definitely can't hide money from her</h3>
             </div>
             <div class='col-lg-6 col-lg-offset-3 well'>
                 <form ng-submit='expenses.add_expense()' class='form'>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <input class="form-control" placeholder='what?' ng-model='expenses.new_expense.name'>
+                    <div class='row'>
+                        <div class='col-lg-6'>
+                            <input class='form-control' type='text' placeholder='what?' ng-model='expenses.new_expense.name' required>
+                            <input class='form-control' type='text' placeholder='why?' ng-model='expenses.new_expense.description' required>
+                            <input class='form-control' type='number' placeholder='how much?' ng-model='expenses.new_expense.cost' required>
                         </div>
-                        <div class="col-lg-6">
-                            <input class="form-control" placeholder='how much?' ng-model='expenses.new_expense.cost'>
-                        </div>
-                        <div class="col-lg-6">
-                            <input class="form-control" placeholder='why?' ng-model='expenses.new_expense.description'>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class='col-lg-1 col-lg-offset-1'>
                             <button type='submit' class='btn btn-default'>Tell your wife</button>
                         </div>
                     </div>
                 </form>
             </div>
             
-            <div class='col-lg-6 col-lg-offset-3 well'>
+            <div class='col-lg-8 col-lg-offset-2 well'>
                 <table class='table'>
                     <tr ng-repeat='expense in expenses.list'>
                         <td>{{expense.date | date:'MMM d, h:mm a' }}</td>
@@ -40,8 +52,6 @@
                     </tr>
                 </table>
             </div>
-
-            <pre class='well well-lg col-lg-12'>{{ expenses.list | json }}</pre>
         </div>
 
         <script src='bower_components/angular/angular.js'></script>
