@@ -1,10 +1,14 @@
 {
-    "name": "angular-sample",
-    "version": "0.0.0",
-    "description": "",
-    "main": "index.js",
-    "dependencies": {
-        "gulp-connect": "~2.0.6",
-        "gulp": "~3.8.8"
-    }
+  "name": "wife",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "gulp-connect": "~2.0.6",
+    "gulp": "~3.8.8",
+    "karma": "~0.12.24"
+  },
+  "devDependencies": {
+    "karma-jasmine": "~0.1.5",
+    "karma-chrome-launcher": "~0.1.5"
+  }
 }

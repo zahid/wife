@@ -6,25 +6,26 @@
         <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Noto+Serif:400italic,400,700italic,700'>
         <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css'>
     </head>
-
+    
     <style type='text/css'>
-        body, p, td, h1, h3 {
+        body, td, h1, h3 {
             color: rgb(68, 66, 62);
             font-family: 'Proxima Nova','Helvetica Neue','Helvetica',sans-serif;
             font-weight: 300;
         }
-        h1 {
-            font-size: 4em;
-        }
+        h1 { font-size: 4em; }
+        #listing { margin-top: 30px; }
+        #add { margin-top: 15px; }
+        #update { margin-top: 15px; }
     </style>
+
     <body ng-app='Wife'>
-        
         <div ng-controller='expenseController'>
             <div class='col-lg-6 col-lg-offset-3'>
                 <h1>wife</h1>
                 <h3>definitely can't hide money from her</h3>
             </div>
-            <div class='col-lg-6 col-lg-offset-3'>
+            <div id='add' class='col-lg-6 col-lg-offset-3'>
                 <form ng-submit='expenses.add_expense()' class='form'>
                     <div class='row-fluid'>
                         <div class='col-lg-6'>
@@ -37,19 +38,21 @@
                                 {{expenses.list.length}} purchases - {{ expenses.total() | currency}} spent
                             </div>
                             <div class='col-lg-12'>
-                                <button type='submit' class='btn btn-default'>update your wife</button>
+                                <button type='submit' id='update' class='col-lg-8 col-lg-offset-2 btn btn-default'>update your wife</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class='col-lg-6 col-lg-offset-3 table-responsive'>
+            <div id='listing' class='col-lg-6 col-lg-offset-3 table-responsive'>
                 <table class='table'>
                     <tr expense-item ng-repeat='expense in expenses.list' expense='expense'></tr>
                 </table>
             </div>
-            <!-- <pre class='well col-lg-12'>{{ expenses | json  }}</pre> -->
+            <pre class='col-lg-12 well'>{{expenses.list | json}}</pre>
         </div>
+        
+        <script src='http://www.parsecdn.com/js/parse-1.3.0.min.js'></script>
         <script src='bower_components/angular/angular.js'></script>
         <script src='app.js'></script>
     </body>
