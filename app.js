@@ -6,21 +6,20 @@ var wife = angular.module('Wife', [])
 .controller('expenseController', function($scope, expenseService) {
     $scope.expenses = {
         list : [],
-        new_expense : { name : null, cost : null, description: null },  
+        _expense : { name : null, cost : null, description: null },  
         add_expense : function() {
-            $scope.expenses.new_expense.date = new Date();
-            $scope.expenses.list.push($scope.expenses.new_expense);
-            $scope.expenses.new_expense = { name : null, cost : null, description: null };
+            $scope.expenses._expense.date = new Date();
+            $scope.expenses.list.push($scope.expenses._expense);
+            $scope.expenses._expense = { name : null, cost : null, description: null };
+        },
+        total : function() {
+            var total = 0;
+            for(var item in $scope.expenses.list) {
+                total += $scope.expenses.list[item].cost;
+            }
+            return total;
         }
     };
-
-    $scope.total = function() {
-        var total = 0;
-        for(var item in $scope.expenses.list) {
-            total += $scope.expenses.list[item].cost;
-        }
-        return total;
-    }
 
     expenseService.load_expenses().then(function (data) {
         data.items.forEach(function(item) {
