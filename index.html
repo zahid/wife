@@ -16,9 +16,6 @@
         h1 {
             font-size: 4em;
         }
-        .well {
-            background-color: white;
-        }
     </style>
     <body ng-app='Wife'>
         
@@ -46,7 +43,7 @@
                     </div>
                 </form>
             </div>
-            <div class='col-lg-6 col-lg-offset-3'>
+            <div class='col-lg-6 col-lg-offset-3 table-responsive'>
                 <table class='table'>
                     <tr expense-item ng-repeat='expense in expenses.list' expense='expense'></tr>
                 </table>
