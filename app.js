@@ -17,7 +17,7 @@ var wife = angular.module('Wife', [])
             count : 0
         }
     };
-
+    
     $scope.$watch('expenses.list', function(o,n) {
         var total_cost = 0;
         for(var item in $scope.expenses.list) {
@@ -26,10 +26,13 @@ var wife = angular.module('Wife', [])
         $scope.expenses.totals.cost = total_cost
         $scope.expenses.totals.count = $scope.expenses.list.length;
     }, true);
-    
+
     expenseService.load_expenses().then(function (data) {
-        $scope.expenses.list = data.items;
+        data.items.forEach(function(item) {
+            $scope.expenses.list.push(item);
+        });
     });
+
 })
 .service('expenseService', function($http) {
     this.load_expenses = function() {
@@ -37,5 +40,14 @@ var wife = angular.module('Wife', [])
             .then(function(response) {
                 return response.data;
             });
+    }
+})
+.directive('expenseItem', function() {
+    return {
+        restrict: 'A',
+        templateUrl: 'expense-item.html',
+        scope : {
+            'expense' : '=' 
+        }
     }
 });

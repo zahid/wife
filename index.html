@@ -48,16 +48,11 @@
             </div>
             <div class='col-lg-6 col-lg-offset-3 well'>
                 <table class='table'>
-                    <tr ng-repeat='expense in expenses.list'>
-                        <td>{{expense.date | date:'MMM d, h:mm a' }}</td>
-                        <td>{{expense.name}}</td>
-                        <td>{{expense.cost | currency }}</td>
-                        <td>{{expense.description }}</td>
-                    </tr>
+                    <tr expense-item ng-repeat='expense in expenses.list' expense='expense'></tr>
                 </table>
             </div>
+            <!-- <pre class='well col-lg-12'>{{ expenses | json  }}</pre> -->
         </div>
-
         <script src='bower_components/angular/angular.js'></script>
         <script src='app.js'></script>
     </body>
