@@ -11,21 +11,16 @@ var wife = angular.module('Wife', [])
             $scope.expenses.new_expense.date = new Date();
             $scope.expenses.list.push($scope.expenses.new_expense);
             $scope.expenses.new_expense = { name : null, cost : null, description: null };
-        },
-        totals : {
-            cost : 0,
-            count : 0
         }
     };
-    
-    $scope.$watch('expenses.list', function(o,n) {
-        var total_cost = 0;
+
+    $scope.total = function() {
+        var total = 0;
         for(var item in $scope.expenses.list) {
-            total_cost += $scope.expenses.list[item].cost;
+            total += $scope.expenses.list[item].cost;
         }
-        $scope.expenses.totals.cost = total_cost
-        $scope.expenses.totals.count = $scope.expenses.list.length;
-    }, true);
+        return total;
+    }
 
     expenseService.load_expenses().then(function (data) {
         data.items.forEach(function(item) {
